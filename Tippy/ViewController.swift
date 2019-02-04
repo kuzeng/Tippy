@@ -20,6 +20,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // This is a good place to retrieve the default tip percentage from UserDefaults
+        // and use it to update the tip amount
+        
+        let defaults = UserDefaults.standard
+        let percentSetting = defaults.integer(forKey: "tip_percent")
+        
+        tipControl.selectedSegmentIndex = percentSetting
+        
+        
     }
 
 
@@ -39,6 +53,8 @@ class ViewController: UIViewController {
         // Update the tip and total labels
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
+        
+        
         
     }
 }
